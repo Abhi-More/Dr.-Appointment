@@ -38,3 +38,23 @@ Follow these instructions to set up and run the project locally.
 ```bash
 git clone https://github.com/your-username/doctor-appointment-system.git
 cd doctor-appointment-system
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run JSON Server
+
+```bash
+npm json-server --watch db.json
+```
+
+
+### 4. Run the application
+
+```bash
+ng serve
+```
