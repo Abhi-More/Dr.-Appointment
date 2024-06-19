@@ -36,7 +36,7 @@ Follow these instructions to set up and run the project locally.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/doctor-appointment-system.git
+git clone https://github.com/Abhi-More/Dr.-Appointment.git
 cd doctor-appointment-system
 ```
 
@@ -58,3 +58,5 @@ npm json-server --watch db.json
 ```bash
 ng serve
 ```
+
+The application will be available at http://localhost:4200/
