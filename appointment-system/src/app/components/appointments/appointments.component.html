@@ -1,0 +1,108 @@
+<div class="item-list">
+  <div class="container">
+    <div class="heading">
+      <h2 class="heading-text">List of Appointments</h2>
+      <div class="add-section my-4">
+        <button class="btn btn-success" (click)="addAppointment()">Add Appointment</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+
+        <!-- spinner to display loading -->
+        <div *ngIf="!loaded" class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                 <span class="sr-only"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- list of appointments -->
+        <table *ngIf="loaded" class="table ">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Disease</th>
+              <th scope="col">Date & Time</th>
+              <th scope="col">Comment</th>
+              <th scope="col" class="action-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let apt of appointments">
+              <th scope="row">{{apt.id}}</th>
+              <td>{{apt.firstName + " " + apt.lastName}}</td>
+              <td>{{apt.disease}}</td>
+              <td>{{apt.appointmentDate.toString().substring(0, 10) + " " + apt.appointmentDate.toString().substring(11)}}</td>
+              <td>{{apt.comment}}</td>
+              <td class="action-col-data">
+                <button type="button" class="btn btn-success" (click)="openModal(apt)">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="deleteAppointment(apt.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Edit -->
+<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Patient Details</h5>
+        <button (click)="hideModal()" class="close border-0" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="editForm" (ngSubmit)="editAppointment()" id="edit-form">
+        <div class="form-group my-2">
+          <p class="apt-id">Appointment Id: {{editForm.value.id}}</p>
+        </div>
+        <div class="form-group my-2">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control mt-1" name="firstName" id="firstName" placeholder="First Name" formControlName="firstName" required/>
+          <div class="text-danger" *ngIf="editForm.get('firstName')?.invalid && editForm.get('firstName')?.touched">
+            <span *ngIf="editForm.get('firstName')?.hasError('required')">First Name is required.</span>
+          </div>
+        </div>
+        <div class="form-group my-2">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control mt-1" name="lastName" id="lastName" placeholder="Last Name" formControlName="lastName" required/>
+          <div class="text-danger" *ngIf="editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched">
+            <span *ngIf="editForm.get('lastName')?.hasError('required')">Last Name is required.</span>
+          </div>
+        </div>
+        <div class="form-group my-2">
+          <label for="disease">Disease Name</label>
+          <input type="text" class="form-control mt-1" name="disease" id="disease" placeholder="Disease" formControlName="disease" required/>
+          <div class="text-danger" *ngIf="editForm.get('disease')?.invalid && editForm.get('disease')?.touched">
+            <span *ngIf="editForm.get('disease')?.hasError('required')">Disease is required.</span>
+          </div>
+        </div>
+        <div class="form-group my-2">
+          <label for="appointmentDate">Date & Time</label>
+          <input type="datetime-local" class="form-control mt-1" name="appointmentDate" id="appointmentDate" placeholder="Date and Time" formControlName="appointmentDate" min="2024-06-17T00:00" required/>
+          <div class="text-danger" *ngIf="editForm.get('appointmentDate')?.invalid && editForm.get('appointmentDate')?.touched">
+            <span *ngIf="editForm.get('appointmentDate')?.hasError('required')">Date & time is required.</span>
+          </div>
+        </div>
+        <div class="form-group my-2">
+          <label for="comment">Comment</label>
+          <textarea type="text" class="form-control mt-1" name="comment" id="comment" placeholder="Comment | Remark" formControlName="comment" rows="2" required></textarea>
+          <div class="text-danger" *ngIf="editForm.get('comment')?.invalid && editForm.get('comment')?.touched">
+            <span *ngIf="editForm.get('comment')?.hasError('required')">Comment is required.</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" name="save" id="save" class="form-submit btn btn-primary" value="Save Changes" [disabled]="editForm.invalid"/>
+          <div class="btn btn-secondary" data-dismiss="modal" (click)="hideModal()">Close</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

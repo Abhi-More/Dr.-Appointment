@@ -1,0 +1,83 @@
+<div class="sign-up">
+  <div class="container">
+    <div class="signup-content">
+      <div class="signup-form">
+        <h2 class="form-title">Sign up</h2>
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="register-form" id="signup-form">
+          <div class="wrapper">
+            <div class="form-group first-name">
+              <label for="fname">Enter First Name</label>
+              <input type="text" name="fname" id="fname" placeholder="First Name" maxlength="25" formControlName="fname" required/>
+              <div *ngIf="signupForm.get('fname')?.invalid && signupForm.get('fname')?.touched">
+                <span *ngIf="signupForm.get('fname')?.hasError('required')">First Name is required.</span>
+                <span *ngIf="signupForm.get('fname')?.hasError('minlength')">Enter atleat 3 characters.</span>
+                <span *ngIf="signupForm.get('fname')?.hasError('pattern')">Please enter alphabets only.</span>
+              </div>
+            </div>
+            <div class="form-group last-name">
+              <label for="lname">Enter Last Name</label>
+              <input type="text" name="lname" id="lname" placeholder="Last Name" formControlName="lname" maxlength="25" required/>
+              <div *ngIf="signupForm.get('lname')?.invalid && signupForm.get('lname')?.touched">
+                <span *ngIf="signupForm.get('lname')?.hasError('required')">Last Name is required.</span>
+                <span *ngIf="signupForm.get('lname')?.hasError('minlength')">Enter atleast 3 characters.</span>
+                <span *ngIf="signupForm.get('lname')?.hasError('pattern')">Please enter alphabets only.</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Enter Email Address</label>
+            <input type="email" name="email" id="email" placeholder="Email" maxlength="30" formControlName="email" required email/>
+            <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+              <span *ngIf="signupForm.get('email')?.hasError('required')">Email is required.</span>
+              <span *ngIf="signupForm.get('email')?.hasError('email')">Enter valid email.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username">Enter Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" maxlength="25" formControlName="username" required/>
+            <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+              <span *ngIf="signupForm.get('username')?.hasError('required')">Username is required.</span>
+              <span *ngIf="signupForm.get('username')?.hasError('minlength')">Username must be at least 3 characters long.</span>
+            </div>
+          </div>
+          <div class="form-group password-form-group">
+            <label for="password">Enter Password</label>
+            <div class="input-wrapper">
+              <input type="{{ showPassword ? 'text' : 'password' }}" name="password" id="password" class="password-form-control" placeholder="Password" maxlength="25" formControlName="password" required/>
+              <i class="fas eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePassword(1)"></i>
+            </div>
+            <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+              <span *ngIf="signupForm.get('password')?.hasError('required')">Password is required.</span>
+              <span *ngIf="signupForm.get('password')?.hasError('minlength')">Password must have greater than 6 characters.</span>
+            </div>
+          </div>
+          <div class="form-group password-form-group">
+            <label for="confirm_pass">Confirm Password</label>
+            <div class="input-wrapper">
+              <input type="{{ showConfirmPassword ? 'text' : 'password' }}" class="password-form-control" name="confirm_pass" id="confirm_pass" placeholder="Password" maxlength="25" formControlName="confirm_pass" required/>
+              <i class="fas eye-icon" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePassword(2)"></i>
+            </div>
+            <div *ngIf="signupForm.get('confirm_pass')?.invalid && signupForm.get('confirm_pass')?.touched">
+              <span *ngIf="signupForm.get('confirm_pass')?.hasError('required')">Password is required.</span>
+              <span *ngIf="signupForm.get('confirm_pass')?.hasError('minlength')">Password must have 6 characters.</span>
+            </div>
+          </div>
+          <div class="login">
+            <a routerLink="/login">Already have an account? Sign in</a>
+          </div>
+          <div class="form-group form-button">
+            <input
+              type="submit"
+              name="signup"
+              id="signup"
+              class="form-submit btn btn-primary"
+              value="Sign up"
+              [disabled]="signupForm.invalid"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

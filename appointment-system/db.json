@@ -1,0 +1,113 @@
+{
+  "users": [
+    {
+      "fname": "admin",
+      "lname": "admin",
+      "email": "admin@gmail.com",
+      "username": "admin",
+      "password": "password",
+      "confirm_pass": "password",
+      "id": 1
+    },
+    {
+      "fname": "Abhishek",
+      "lname": "More",
+      "email": "abhishekmoreofficial@gmail.com",
+      "username": "Abhishek",
+      "password": "Abhishek",
+      "confirm_pass": "Abhishek",
+      "id": 2
+    },
+    {
+      "fname": "Abhishek",
+      "lname": "More",
+      "email": "amore8196@gmail.com",
+      "username": "Abhishek",
+      "password": "Abhishek",
+      "confirm_pass": "Abhishek",
+      "id": 3
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "wedferfrds",
+      "disease": "Flu",
+      "appointmentDate": "2023-06-14T11:12",
+      "comment": "Patient experiencing mild symptoms."
+    },
+    {
+      "id": 2,
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "disease": "Cold",
+      "appointmentDate": "2023-06-14T11:11",
+      "comment": "Patient has a persistent cough."
+    },
+    {
+      "id": 3,
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "disease": "COVID-19",
+      "appointmentDate": "2023-06-15T09:00",
+      "comment": "Patient tested positive, mild symptoms."
+    },
+    {
+      "id": 4,
+      "firstName": "Bob",
+      "lastName": "Williams",
+      "disease": "Asthma",
+      "appointmentDate": "2025-12-12T15:46",
+      "comment": "Regular check-up for asthma management."
+    },
+    {
+      "id": 5,
+      "firstName": "Mary",
+      "lastName": "Brown",
+      "disease": "Allergy",
+      "appointmentDate": "2023-06-17T10:15",
+      "comment": "Severe pollen allergy."
+    },
+    {
+      "id": 6,
+      "firstName": "James",
+      "lastName": "Jones",
+      "disease": "Hypertension",
+      "appointmentDate": "2023-06-18T12:30",
+      "comment": "Blood pressure follow-up."
+    },
+    {
+      "id": 7,
+      "firstName": "Patricia",
+      "lastName": "Garcia",
+      "disease": "Diabetes",
+      "appointmentDate": "2023-06-19T08:00",
+      "comment": "Routine diabetes management."
+    },
+    {
+      "id": 8,
+      "firstName": "Robert",
+      "lastName": "Martinez",
+      "disease": "Migraine",
+      "appointmentDate": "2023-06-20T15:00",
+      "comment": "Patient experiencing frequent migraines."
+    },
+    {
+      "id": 9,
+      "firstName": "Linda",
+      "lastName": "Hernandez",
+      "disease": "Bronchitis",
+      "appointmentDate": "2023-06-21T09:30",
+      "comment": "Patient has a severe cough."
+    },
+    {
+      "id": 10,
+      "firstName": "Abhishek",
+      "lastName": "More",
+      "disease": "Flu",
+      "appointmentDate": "2024-06-18T03:28",
+      "comment": "Patient experiencing mild symptoms."
+    }
+  ]
+}

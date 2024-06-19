@@ -1,0 +1,37 @@
+<div class="sign-in">
+  <div class="container">
+    <div class="signin-content">
+      <div class="signin-form">
+        <h2 class="form-title">Sign in</h2>
+        <!-- login form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="login-form">
+          <div class="form-group">
+            <label for="username">Enter Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" maxlength="25" formControlName="username" required/>
+            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+              <span *ngIf="loginForm.get('username')?.hasError('required')">Username is required.</span>
+              <span *ngIf="loginForm.get('username')?.hasError('minlength')">Username must be at least 3 characters long.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Enter Password</label>
+            <div class="input-wrapper">
+              <input type="{{ showPassword ? 'text' : 'password' }}" name="password" id="password" placeholder="Password" maxlength="25" formControlName="password" required/>
+              <i class="fas eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePassword()"></i>
+            </div>
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <span *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</span>
+              <span *ngIf="loginForm.get('password')?.hasError('minlength')">Password must have more than 6 characters.</span>
+            </div>
+          </div>
+          <div class="create-account mb-2 form-group">
+            <a routerLink="/register">Don't have account? Sign up.</a>
+          </div>
+          <div class="form-group form-button">
+            <input type="submit" name="signin" id="signin" class="form-submit btn btn-primary" value="Log in" [disabled]="loginForm.invalid"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

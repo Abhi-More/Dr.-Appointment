@@ -1,0 +1,7 @@
+.page-wrapper {
+  min-height: calc(100vh - 60px);
+}
+
+.main-section{
+  margin: 40px 0;
+}

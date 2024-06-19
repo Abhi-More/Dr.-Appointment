@@ -1,0 +1,72 @@
+.heading-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading-text {
+  text-align: center;
+}
+
+.heading-text h1 {
+  color: #022987;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.heading-text h3 {
+  font-size: 20px;
+}
+
+.heading-text p, .text-wrapper p {
+  margin: 20px 0px;
+  font-family: "THICCCBOI", sans-serif;
+  font-size: 17px;
+  word-spacing: normal !important;
+}
+
+.btn-wrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-wrapper button {
+  border: none;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-wrapper button:hover { 
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-col .image-outer {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-col .image-outer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text-col-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

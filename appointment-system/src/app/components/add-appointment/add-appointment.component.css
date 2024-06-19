@@ -1,0 +1,83 @@
+.form-col, .img-col {
+  padding: 20px 20px;
+}
+
+.add-appointment-title {
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.form-wrapper {
+  padding: 30px;
+  border: 1px solid #a2a2a269;
+  border-radius: 5px;
+}
+
+.form-wrapper:hover {
+  box-shadow: 0 0 16.83px .17px rgba(0,0,0,.3);
+}
+
+.form-heading {
+  color: #022987;
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden
+}
+
+.form-group:last-child {
+  margin-bottom: 0
+}
+
+.submit {
+  margin-top: 30px;
+}
+
+input, textarea {
+  width: 100%;
+  display: block;
+  border: none;
+  border-radius: 0%;
+  border-bottom: 1px solid #999;
+  padding: 6px 30px;
+  font-family: Poppins;
+  box-sizing: border-box
+}
+
+input:focus {
+  border: none;
+  border: 1px solid #3a3a3a
+}
+
+label {
+  color: #000000d3;
+  font-weight: 500;
+}
+
+.submit button {
+  padding: 8px 50px;
+}
+
+.img-col {
+  display: flex;
+  align-items: center;
+}
+
+.add-appointment-section .figure .img-outer {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-appointment-section .figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

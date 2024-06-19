@@ -1,0 +1,12 @@
+.footer {
+  background: #2a2a2a;
+  background: linear-gradient(0deg, #111142,#111169 50%,#2222b1) !important;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright-text {
+  color: #fff;
+}
