@@ -1,6 +1,6 @@
 # Dr. Appointment
 
-# Doctor Appointment System
+# Doctor's Appointment System
 
 ## Description
 
