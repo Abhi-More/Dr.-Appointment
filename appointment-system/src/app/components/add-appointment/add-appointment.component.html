@@ -6,6 +6,8 @@
         <div class="form-wrapper mt-4">
           <div class="add-form">
             <h5 class="title-text form-heading text-center mb-4">Fill patient's details</h5>
+
+            <!-- form to create appointment -->
             <form [formGroup]="patientForm" (ngSubmit)="createAppointment()" id="appointment-form">
               <div class="form-group my-3">
                 <label for="firstName">Enter First Name</label>

@@ -13,9 +13,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppointmentsComponent {
 
-  appointments!: Appointment[];
-  loaded: boolean = false;
-  editForm!: FormGroup;
+  public appointments!: Appointment[];
+  public loaded: boolean = false;
+  public editForm!: FormGroup;
 
   constructor(
     private aptService: AppointmentService,
@@ -36,63 +36,61 @@ export class AppointmentsComponent {
   }
 
   // ngOnInit() lifecycle hook
-  ngOnInit() {
+  public ngOnInit(): void {
     this.titleService.setTitle('Dr. Appointments | Appointments');
     this.loadAppointments();
   }
   
   // loads all appointments
-  loadAppointments(): void {
+  public loadAppointments(): void {
     this.aptService.getAppointments().subscribe((data) => {
       this.appointments = data;
       this.loaded = true;
     },
     (error) => {
+      this.loaded = true;
       this.toastr.error("Failed to load data!");
     });
   }
 
   // create new appointment
-  addAppointment(): void {
+  public addAppointment(): void {
     this.router.navigate(['/add']);
   }
 
   //update appointment
-  editAppointment(): void {
+  public editAppointment(): void {
     if(this.checkBooked()) {
       this.aptService.updateAppointment(this.editForm.value).subscribe(()=>{
         this.loadAppointments();
         this.hideModal();
-        this.toastr.clear();
         this.toastr.success("Details updated!")
       },
       (err)=>{
-        this.toastr.clear();
         this.toastr.error("Something went wrong!");
       });
     }
     else {
-      this.toastr.warning("Doctor is booked on entered date and time. Please enter different date or time");
+      this.toastr.warning("Doctor is booked on entered date and time. Please enter different date or time");      
       document.getElementById('appointmentDate')?.focus();
     }
   }
 
   // delete appointment
-  deleteAppointment(id: number | undefined): void {
+  public deleteAppointment(id: number | undefined): void {
     if(confirm("Do you want to delete appointment?")) {
       this.aptService.deleteAppointment(id).subscribe(()=>{
-        this.toastr.clear();
         this.toastr.success("Appointmment deleted");
         this.loadAppointments();
-      },(err)=>{
-        this.toastr.clear();
-        this.toastr.error("Error occured: ");
+      },
+      (err)=>{
+        this.toastr.error("Error occured!");
       })
     }
   }
 
   // Check if the doctor is booked on particular date and time.
-  checkBooked(): boolean {
+  public checkBooked(): boolean {
     for (let index = 0; index < this.appointments.length; index++) {
       if(this.editForm.value.appointmentDate === this.appointments[index].appointmentDate && this.editForm.value.id != this.appointments[index].id) {
         return false;
@@ -106,7 +104,7 @@ export class AppointmentsComponent {
     const modal = document.getElementById('edit-modal');
     this.renderer.addClass(modal, 'show');
     this.renderer.setStyle(modal, 'display', 'block');
-
+    
     this.editForm.controls['id'].setValue(apt.id);
     this.editForm.controls['firstName'].setValue(apt.firstName);
     this.editForm.controls['lastName'].setValue(apt.lastName);
@@ -116,7 +114,7 @@ export class AppointmentsComponent {
   }
 
   // hide modal
-  hideModal(): void {
+  public hideModal(): void {
     const modal = document.getElementById('edit-modal');
     this.renderer.removeClass(modal, 'show');
     this.renderer.setStyle(modal, 'display', 'none');

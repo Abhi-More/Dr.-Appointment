@@ -11,16 +11,16 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  
-  loginForm!: FormGroup;
-  showPassword: boolean = false;
+
+  public loginForm!: FormGroup;
+  public showPassword: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private titleService: Title,
     private authService: AuthService,
     private toastr: ToastrService
-  ) { 
+  ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]]
@@ -28,18 +28,17 @@ export class LoginComponent {
   }
 
   // ngOnInit Hook to set title
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.titleService.setTitle('Dr. Appointments | Login');
   }
 
   // function for login
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
-      
+
       if (this.authService.login(username, password)) {
-        this.toastr.clear();
         this.toastr.success("Logged in successfully ✅");
       }
       else {
@@ -53,7 +52,7 @@ export class LoginComponent {
   }
 
   // to show password
-  togglePassword(): void {
+  public togglePassword(): void {
     this.showPassword = !this.showPassword;
   }
 }

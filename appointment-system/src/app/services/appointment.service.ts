@@ -12,27 +12,27 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   // get all appointments
-  getAppointments(): Observable<Appointment[]>{
+  public getAppointments(): Observable<Appointment[]>{
     return this.http.get<Appointment[]>(this.apiUrl);
   }
 
   // get one appointment
-  getAppointment(id: number): Observable<Appointment>{
+  public getAppointment(id: number): Observable<Appointment>{
     return this.http.get<Appointment>(`${this.apiUrl}/${id}`);
   }
   
   // create new appointment
-  createAppointment(data: Appointment): Observable<Appointment>{
+  public createAppointment(data: Appointment): Observable<Appointment>{
     return this.http.post<Appointment>(this.apiUrl, data);
   }
   
   // update appointment
-  updateAppointment(data: Appointment): Observable<Appointment>{
+  public updateAppointment(data: Appointment): Observable<Appointment>{
     return this.http.put<Appointment>(`${this.apiUrl}/${data.id}`, data);
   }
 
   // delete appointment
-  deleteAppointment(id: number | undefined): Observable<Appointment>{
+  public deleteAppointment(id: number | undefined): Observable<Appointment>{
     return this.http.delete<Appointment>(`${this.apiUrl}/${id}`);
   }
 }

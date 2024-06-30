@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 export class HomeComponent {
   constructor(private titleService: Title)  {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.titleService.setTitle('Dr. Appointment | Home');
   }
 }

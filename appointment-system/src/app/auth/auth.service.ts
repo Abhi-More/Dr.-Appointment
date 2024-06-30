@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   // login function
-  login(username: string, password: string): boolean {
+  public login(username: string, password: string): boolean {
     for(let i = 0; i < this.users.length; i++) {
       if(this.users[i].username === username && this.users[i].password === password) {
         localStorage.setItem('user', JSON.stringify({ username }));
@@ -33,21 +33,21 @@ export class AuthService {
   }
 
   // logout function
-  logout(): void {
+  public logout(): void {
     localStorage.removeItem('user');
     this.loggedIn = false;
     this.router.navigate(['/login']);
   }
 
   // check login status
-  isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return localStorage.getItem('user') !== null;
   }
 
   // Get all users
-  getAllUsers(): void {
-      this.userService.getUsers().subscribe((data) => {
-        this.users = data;
-      })
+  public getAllUsers(): void {
+    this.userService.getUsers().subscribe((data) => {
+      this.users = data;
+    });
   }
 }

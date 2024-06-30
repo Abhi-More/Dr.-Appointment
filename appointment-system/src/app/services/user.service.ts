@@ -15,17 +15,17 @@ export class UserService {
   ) {}
 
   // get all users
-  getUsers(): Observable<User[]> {
+  public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);
   }
 
   // get one user
-  getUser(id: number): Observable<User> {
+  public getUser(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`)
   }
 
   // create new user
-  createUser(user: User): Observable<User>{
+  public createUser(user: User): Observable<User>{
     return this.http.post<User>(this.apiUrl, user);
   }  
 }

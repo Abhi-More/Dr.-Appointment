@@ -12,8 +12,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class AddAppointmentComponent {
 
-  patientForm!: FormGroup;
-  appointments!: Appointment[];
+  public patientForm!: FormGroup;
+  public appointments!: Appointment[];
 
   constructor(
     private fb: FormBuilder,
@@ -31,37 +31,45 @@ export class AddAppointmentComponent {
     })
   }
 
+  // ngOnInit lifecycle hook
   ngOnInit(): void {
-    this.titleService.setTitle("Dr. Appointment | Add")
+    this.titleService.setTitle("Dr. Appointment | Add");
+    this.loadAppointments();
+  }
+
+  // loads all appointments
+  public loadAppointments(): void {
+    this.aptService.getAppointments().subscribe(
+      (data) => {
+        this.appointments = data;
+      },
+      (error) => {
+        this.toastr.error("Server Error!");
+      });
   }
 
   // create new appointment
-  createAppointment(): void {
-    if(this.checkBooked()) {
-      this.aptService.createAppointment(this.patientForm.value).subscribe((res) => {
-        this.toastr.clear();
-        this.toastr.success("Appointment added ✅");
-        this.patientForm.reset();
-      },(err)=>{
-        this.toastr.clear();
-        this.toastr.error("Something went wrong!");
-      })
+  public createAppointment(): void {
+    if (this.checkBooked()) {
+      this.aptService.createAppointment(this.patientForm.value).subscribe(
+        (res) => {
+          this.toastr.success("Appointment added ✅");
+          this.patientForm.reset();
+        },
+        (err) => {
+          this.toastr.error("Something went wrong!");
+        })
     }
     else {
-      this.toastr.clear();
-      this.toastr.warning("Doctor is booked on entered date and time. Please enter different date or time!");
+      this.toastr.warning("Doctor is booked on entered date and time. Please try with different date or time!");
       document.getElementById('appointmentDate')?.focus();
     }
   }
 
   // Check if the doctor is booked on particular date and time.
-  checkBooked(): boolean {
-    this.aptService.getAppointments().subscribe((data)=>{
-      this.appointments = data;
-    });
-
+  private checkBooked(): boolean {
     for (let index = 0; index < this.appointments.length; index++) {
-      if(this.patientForm.value.appointmentDate === this.appointments[index].appointmentDate) {
+      if (this.patientForm.value.appointmentDate === this.appointments[index].appointmentDate) {
         return false;
       }
     }
